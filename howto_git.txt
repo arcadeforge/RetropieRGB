@@ -1,0 +1,38 @@
+Author : Jochen Zurborg
+Date   : 04.11.2019
+
+Find here a quick tutorial how to use git for our little project.
+
+
+Enabling your account
+=====================
+
+git config --global user.name "yourname"
+git config --global user.email "youremail"
+
+
+What happened since my last changes?
+====================================
+
+git status
+
+Adding edited files to your local repository
+============================================
+
+- easy way
+git add .
+
+- file specific
+git add yourfilename
+
+Commit changes to repository
+============================
+
+git commit -m"What you did"
+
+Uploading changes to github.com
+===============================
+
+git push
+
+
