@@ -3,6 +3,10 @@ Date   : 04.11.2019
 
 Find here a quick tutorial how to use git for our little project.
 
+Downloading this repository
+===========================
+
+git clone https://github.com/arcadeforge/runcommand
 
 Enabling your account
 =====================
