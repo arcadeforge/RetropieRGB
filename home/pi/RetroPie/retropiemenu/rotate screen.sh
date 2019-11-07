@@ -6,11 +6,22 @@
 # This script is made for hardware pi2scart and pi2jamma from www.arcadeforge.de
 
 
-killall emulationstation 2> /dev/null
+killall emulationstation > /dev/null 2>&1
+
+sleep 1
 
 grep es_rotate /boot/config.txt > /home/pi/config.sh
 chmod +x /home/pi/config.sh
+
+num=$(more /home/pi/config.sh | wc -l)
+
+if [ $num -eq 0 ] ; then
+	echo "es_rotate=0" > /home/pi/config.sh
+	echo "es_rotate=0" > /boot/config.txt
+fi
+
 . /home/pi/config.sh
+
 
 #rm  /home/pi/config.sh
 #echo $es_rotate
