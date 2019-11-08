@@ -7,6 +7,7 @@ rgb_default_config=/home/pi/rgb_default_config.sh
 config=/boot/config.txt
 log=/home/pi/log.txt
 
+rm $log > /dev/null
 # read config.txt and put all config parameters for RetroPieRGB Parameters to 
 # rgb_config
 
@@ -21,12 +22,12 @@ function get_params()
 		    echo "$param=$default_value" | sudo tee -a $config
         else
             # var exists in config.txt
-            echo "variable in config.txt exists" > $log
-            echo "sync calue in rgb_config" > $log
+            echo "variable in config.txt exists" >> $log
+            echo "sync calue in rgb_config" >> $log
 
-            echo $result > $log
+            echo $result >> $log
             value=$(echo $result|cut -d"=" -f2)
-            echo $value > $log
+            echo $value >> $log
             sed -i "s/^$param.*/$param=$value/" $rgb_config
 
 	    fi

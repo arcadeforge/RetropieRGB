@@ -1,1 +1,0 @@
-emulationstation --screenrotate 2
