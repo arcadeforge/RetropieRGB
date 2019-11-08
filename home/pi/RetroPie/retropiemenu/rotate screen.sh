@@ -5,26 +5,16 @@
 #
 # This script is made for hardware pi2scart and pi2jamma from www.arcadeforge.de
 
+setterm -foreground black -store
 
 killall emulationstation > /dev/null 2>&1
+clear
 
 sleep 1
 
-grep es_rotate /boot/config.txt > /home/pi/config.sh
-chmod +x /home/pi/config.sh
+# params was already fetched
+. /home/pi/rgb_config.sh
 
-num=$(more /home/pi/config.sh | wc -l)
-
-if [ $num -eq 0 ] ; then
-	echo "es_rotate=0" > /home/pi/config.sh
-	echo "es_rotate=0" > /boot/config.txt
-fi
-
-. /home/pi/config.sh
-
-
-#rm  /home/pi/config.sh
-#echo $es_rotate
 
 new_rotate=$(( $es_rotate + 1 ))
 if [ $new_rotate -eq 4 ] ; then
@@ -35,4 +25,9 @@ fi
 #sleep 1
 sudo sed -i "s/^es_rotate.*/es_rotate=$new_rotate/" /boot/config.txt
 
+sed -i "s/^es_rotate.*/es_rotate=$new_rotate/" /home/pi/rgb_config.sh
+
+setterm -foreground white -store
+
 emulationstation --screenrotate $new_rotate
+
