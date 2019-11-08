@@ -94,4 +94,4 @@ else
 
 fi
 
-#$path/game_res.sh
+$path/game_res.sh
