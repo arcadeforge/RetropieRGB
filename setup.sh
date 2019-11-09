@@ -13,6 +13,7 @@ cp opt/retropie/configs/all/runcommand-onend.sh /opt/retropie/configs/all/
 sudo cp etc/emulationstation/themes.sh /etc/emulationstation/
 cp home/pi/RetroPie-Setup/scriptmodules/supplementary/esthemes.sh /home/pi/RetroPie-Setup/scriptmodules/supplementary/
 cp home/pi/RetroPie/retropiemenu/Update\ RetroPieRGB.sh /home/pi/RetroPie/retropiemenu/
+sudo cp boot/config_lowres.txt /boot/config.txt
 
-more setup.sh
+
 echo "done."
