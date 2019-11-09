@@ -1,5 +1,8 @@
 local themes=(
-        'arcadeforge es-theme-240p_Bubblegum'
+        'arcadeforge pixel-heaven'
+        'arcadeforge pixel-heaven-text'
+        'arcadeforge 240p_Bubblegum'
+        'arcadeforge 240p-honey'
         'arcadeforge push-a'
         'arcadeforge push-a-v'
         'RetroPie carbon'

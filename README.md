@@ -11,7 +11,14 @@ Please goto http://www.arcadeforge.de and get this awesome gadget.
 Installation
 ============
 
+Download latest retropie and install it as described on retropie wiki. 
+Connect Keyboard.
+Activate wiki.
+In emulationstation press F4 to get cmd shell 
+
 Type 
 
-sudo setup.sh
+git clone https://github.com/arcadeforge/RetroPieRGB
+cd RetroPieRGB
+sudo ./setup.sh
 
