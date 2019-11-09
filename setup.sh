@@ -12,6 +12,7 @@ cp opt/retropie/configs/all/arcade_res_table.txt /opt/retropie/configs/all/
 cp opt/retropie/configs/all/runcommand-onend.sh /opt/retropie/configs/all/
 sudo cp etc/emulationstation/themes.sh /etc/emulationstation/
 cp home/pi/RetroPie-Setup/scriptmodules/supplementary/esthemes.sh /home/pi/RetroPie-Setup/scriptmodules/supplementary/
+cp home/pi/RetroPie/retropiemenu/Update\ RetroPieRGB.sh /home/pi/RetroPie/retropiemenu/
 
 more setup.sh
 echo "done."
