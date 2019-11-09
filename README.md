@@ -19,6 +19,8 @@ In emulationstation press F4 to get cmd shell
 Type 
 
 git clone https://github.com/arcadeforge/RetroPieRGB
+
 cd RetroPieRGB
+
 sudo ./setup.sh
 
