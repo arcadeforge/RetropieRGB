@@ -18,6 +18,9 @@
 
 log=/home/pi/log.txt
 
+dir=($pwd)
+
+
 . /home/pi/rgb_config.sh
 
 # get the system name
@@ -37,14 +40,16 @@ rom_bn="${rom_bn##*/}"
 
 path=/opt/retropie/configs/all
 
+
 function prep_res ()
 {
-    mme4crt $1 $2 $3 $mme4crt_shift 1 0 >> $log
-    dir=$(pwd)
-    cp $dir/game_res.sh $path
-    cp $dir/retroarch_game.cfg $path
-    chmod +x $path/game_res.sh
-    cp $path/retroarch_game.cfg "$rom_fp"".cfg" 
+    cd $path
+    mme4crt $1 $2 $3 $rgb_screen_shift $rgb_screen_width 0 >> $log
+    #cp $dir/game_res.sh $path
+    #cp $dir/retroarch_game.cfg $path
+    chmod +x game_res.sh
+    cp retroarch_game.cfg "$rom_fp"".cfg" 
+    cd $dir
 
 }
 
