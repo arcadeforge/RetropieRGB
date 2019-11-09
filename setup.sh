@@ -10,6 +10,8 @@ cp opt/retropie/configs/all/runcommand-onstart.sh /opt/retropie/configs/all/
 cp /opt/retropie/configs/all/runcommand-onstart.sh /opt/retropie/configs/all/runcommand-onstart.sh_asche
 cp opt/retropie/configs/all/arcade_res_table.txt /opt/retropie/configs/all/
 cp opt/retropie/configs/all/runcommand-onend.sh /opt/retropie/configs/all/
+sudo cp etc/emulationstation/themes.sh /etc/emulationstation/
+cp home/pi/RetroPie-Setup/scriptmodules/supplementary/esthemes.sh /home/pi/RetroPie-Setup/scriptmodules/supplementary/
 
 more setup.sh
 echo "done."
