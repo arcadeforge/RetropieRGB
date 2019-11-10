@@ -16,22 +16,18 @@ rm $log > /dev/null
 
 function pikeyd165_start ()
 {
+    sudo chmod a+rwx /dev/uinput
     pikeyd165_stop
-    if [ "$PI2SCART" == "Y" ]; then    
-        log_msg "pikeyd165_start : didn't started pikeyd165, because pi2scart is active!" 0
-    else 
-        pikeyd165 -smi -ndb -d &> /dev/null
-        log_msg "pikeyd165_start : Started pikeyd165, pi2jamma is active!" 0
-    fi
+    sudo -s pikeyd165 -smi -ndb -d &> /dev/null
 }
 
 function pikeyd165_stop ()
 {
-    # do not take care about pi2scart. Better to stop pikeyd165 once more  
-    pikeyd165 -k &> /dev/null
+ 
+    sudo chmod a+rwx /dev/uinput
+
+    sudo -s  pikeyd165 -k &> /dev/null
     #killall pikeyd165
-    kill_running pikeyd165
-    log_msg "pikeyd165_stop : Kill pikeyd165" 0
 }
 
 
