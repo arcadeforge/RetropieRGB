@@ -1,5 +1,6 @@
 echo "installing files"
 
+
 cp opt/retropie/configs/all/autostart.sh  /opt/retropie/configs/all/
 cp home/pi/RetroPie/retropiemenu/rotate\ screen.sh  /home/pi/RetroPie/retropiemenu
 cp home/pi/rgb_default_config.sh /home/pi/
@@ -16,6 +17,6 @@ sudo cp etc/emulationstation/themes.sh /etc/emulationstation/
 cp home/pi/RetroPie-Setup/scriptmodules/supplementary/esthemes.sh /home/pi/RetroPie-Setup/scriptmodules/supplementary/
 cp home/pi/RetroPie/retropiemenu/Update\ RetroPieRGB.sh /home/pi/RetroPie/retropiemenu/
 sudo cp boot/config_lowres.txt /boot/config.txt
-
+sudo chmod a+w /boot/config.txt
 
 echo "done."
