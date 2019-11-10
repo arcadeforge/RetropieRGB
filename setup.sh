@@ -17,6 +17,7 @@ sudo cp etc/emulationstation/themes.sh /etc/emulationstation/
 cp home/pi/RetroPie-Setup/scriptmodules/supplementary/esthemes.sh /home/pi/RetroPie-Setup/scriptmodules/supplementary/
 cp home/pi/RetroPie/retropiemenu/Update\ RetroPieRGB.sh /home/pi/RetroPie/retropiemenu/
 sudo cp boot/config_lowres.txt /boot/config.txt
+sudo chmod a+x /etc/emulationstation/themes.sh
 
 
 echo "done."

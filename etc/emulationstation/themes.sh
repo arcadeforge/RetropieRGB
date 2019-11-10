@@ -1,10 +1,10 @@
 local themes=(
+        'arcadeforge push-a'
+        'arcadeforge push-a-v'
         'arcadeforge pixel-heaven'
         'arcadeforge pixel-heaven-text'
         'arcadeforge 240p_Bubblegum'
         'arcadeforge 240p-honey'
-        'arcadeforge push-a'
-        'arcadeforge push-a-v'
         'RetroPie carbon'
         'RetroPie carbon-centered'
         'RetroPie carbon-nometa'
