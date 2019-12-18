@@ -53,6 +53,8 @@ local themes=(
         'arcadeforge pixel-heaven-text'
         'arcadeforge 240p_Bubblegum'
         'arcadeforge 240p-honey'
+        'xovox RetroCRT-240p'
+        'xovox RetroCRT-240p-Vertical'
         'RetroPie carbon'
         'RetroPie carbon-centered'
         'RetroPie carbon-nometa'
