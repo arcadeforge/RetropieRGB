@@ -58,7 +58,7 @@ if [[ "$system" == "arcade" ]] || [[ "$system" == "fba" ]] || [[ "$system" == "m
     echo "rom $rom_bn" >> $log
     
 	# get resolution of rom
-	rom_resolution=$(grep "$rom_bn;" $path/arcade_res_table.txt | cut -d";" -f3) 
+	rom_resolution=$(grep "^$rom_bn;" $path/arcade_res_table.txt | cut -d";" -f3) 
 	rom_resolution_width=$(echo $rom_resolution | cut -f1 -d"x")
 	rom_resolution_height=$(echo $rom_resolution | cut -f2 -d"x" | cut -f1 -d"@")
 	rom_resolution_freq=$(echo $rom_resolution | cut -f2 -d"x" | cut -f2 -d"@")
