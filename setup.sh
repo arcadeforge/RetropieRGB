@@ -16,8 +16,21 @@ cp opt/retropie/configs/all/runcommand-onend.sh /opt/retropie/configs/all/
 sudo cp etc/emulationstation/themes.sh /etc/emulationstation/
 cp home/pi/RetroPie-Setup/scriptmodules/supplementary/esthemes.sh /home/pi/RetroPie-Setup/scriptmodules/supplementary/
 cp home/pi/RetroPie/retropiemenu/Update\ RetroPieRGB.sh /home/pi/RetroPie/retropiemenu/
-sudo cp boot/config_lowres.txt /boot/config.txt
+model=$(cat /proc/device-tree/model | cut -c1-14)
+echo $model
+
+if [ "$model" == "Raspberry Pi 4" ]; then
+  echo "found pi4"
+  sudo cp boot/config.txt_rpi4 /boot/config.txt
+
+else
+  echo "found pi3"
+  sudo cp boot/config.txt_rpi3 /boot/config.txt
+
+fi
+
+
 sudo chmod a+x /etc/emulationstation/themes.sh
 
 
-echo "done."
+echo "done. Please reboot."

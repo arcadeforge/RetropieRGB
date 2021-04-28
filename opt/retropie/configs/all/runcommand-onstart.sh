@@ -53,50 +53,55 @@ function prep_res ()
 
 }
 
-# Determine if arcade or fba then determine resolution, set hdmi_timings else goto console section
-if [[ "$system" == "arcade" ]] || [[ "$system" == "fba" ]] || [[ "$system" == "mame-libretro" ]] ; then
-    echo "rom $rom_bn" >> $log
-    
-	# get resolution of rom
-	rom_resolution=$(grep "$rom_bn;" $path/arcade_res_table.txt | cut -d";" -f3) 
-	rom_resolution_width=$(echo $rom_resolution | cut -f1 -d"x")
-	rom_resolution_height=$(echo $rom_resolution | cut -f2 -d"x" | cut -f1 -d"@")
-	rom_resolution_freq=$(echo $rom_resolution | cut -f2 -d"x" | cut -f2 -d"@")
-	
-	echo $rom_resolution >> $log
-	
-	# Set rom_resolution_height for 480p and 448p roms
-	if [ $rom_resolution_height == "480" ]; then
-		rom_resolution_height="240"
-	elif [ $rom_resolution_height == "448" ]; then
-		rom_resolution_height="224"		
-	fi
+model=$(cat /proc/device-tree/model | cut -c1-14)
+#echo $model
 
+if [ ! "$model" == "Raspberry Pi 4" ]; then
 
-	# Create rom_name.cfg
-	if ! [ -f "$rom_fp"".cfg" ]; then 
-		touch "$rom_fp"".cfg" 
-	fi
-
-    prep_res $rom_resolution_width $rom_resolution_height $rom_resolution_freq
-
-
-	# determine if vertical  
-	if grep -w -q "$rom_bn" /opt/retropie/configs/all/vertical.txt ; then 
-		# Add vertical parameters (video_allow_rotate = "true")
-		if ! grep -q "video_allow_rotate" "$rom_fp"".cfg"; then
-			echo -e "video_allow_rotate = \"true\"" >> "$rom_fp"".cfg" 2>&1
+	# Determine if arcade or fba then determine resolution, set hdmi_timings else goto console section
+	if [[ "$system" == "arcade" ]] || [[ "$system" == "fba" ]] || [[ "$system" == "mame-libretro" ]] ; then
+	    echo "rom $rom_bn" >> $log
+		# get resolution of rom
+		rom_resolution=$(grep "$rom_bn;" $path/arcade_res_table.txt | cut -d";" -f3) 
+		rom_resolution_width=$(echo $rom_resolution | cut -f1 -d"x")
+		rom_resolution_height=$(echo $rom_resolution | cut -f2 -d"x" | cut -f1 -d"@")
+		rom_resolution_freq=$(echo $rom_resolution | cut -f2 -d"x" | cut -f2 -d"@")
+		echo $rom_resolution >> $log
+		# Set rom_resolution_height for 480p and 448p roms
+		if [ $rom_resolution_height == "480" ]; then
+			rom_resolution_height="240"
+		elif [ $rom_resolution_height == "448" ]; then
+			rom_resolution_height="224"		
 		fi
-		# Add vertical parameters (video_rotation = 1)
-		if ! grep -q "video_rotation" "$rom_fp"".cfg"; then
-			echo -e "video_rotation = \"1\"" >> "$rom_fp"".cfg" 2>&1
+
+
+		# Create rom_name.cfg
+		if ! [ -f "$rom_fp"".cfg" ]; then 
+			touch "$rom_fp"".cfg" 
 		fi
+
+	    prep_res $rom_resolution_width $rom_resolution_height $rom_resolution_freq
+
+
+		# determine if vertical  
+		if grep -w -q "$rom_bn" /opt/retropie/configs/all/vertical.txt ; then 
+			# Add vertical parameters (video_allow_rotate = "true")
+			if ! grep -q "video_allow_rotate" "$rom_fp"".cfg"; then
+				echo -e "video_allow_rotate = \"true\"" >> "$rom_fp"".cfg" 2>&1
+			fi
+			# Add vertical parameters (video_rotation = 1)
+			if ! grep -q "video_rotation" "$rom_fp"".cfg"; then
+				echo -e "video_rotation = \"1\"" >> "$rom_fp"".cfg" 2>&1
+			fi
+		fi
+
+	# hier besser eine Standard super res.
+	else
+	    prep_res 320 224 60
+
 	fi
 
-# hier besser eine Standard super res.
-else
-    prep_res 320 224 60
+  	$path/game_res.sh
 
 fi
 
-$path/game_res.sh
